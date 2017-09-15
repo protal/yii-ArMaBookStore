@@ -137,8 +137,8 @@
   <div class="login-page">
     <div class="form">
       <form class="login-form">
-        <input type="text" placeholder="username">
-        <input type="password" placeholder="password">
+        <input name = "lg_name" type="text" placeholder="username">
+        <input name = "lg_password" type="password" placeholder="password">
         <button>login</button>
         <p class="message">
           <a href="#">Register</a>
