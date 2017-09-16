@@ -1,0 +1,29 @@
+<?php
+$this->title = 'ArmaBook List';
+$baseUrl=\Yii::getAlias('@web');
+?>
+
+
+<table border="1" class="table table-striped">
+                        
+	<tr>
+		<th data-field="name" data-sortable="true">ชื่อหนังสือ </th>
+		<th data-field="type" data-sortable="true">ประเภทหนังสือ</th>
+		<th data-field="price" data-sortable="true">ราคา</th>
+		<th data-field="days" data-sortable="true">จำนวนวันที่ยืม</th>
+		<th data-field="charge" data-sortable="true">ค่าปรับ</th>
+		<th data-field="total" data-sortable="true">จำนวนหนังสือ</th>
+    </tr>
+	
+	<?php foreach ($result as $var){?>
+	<tr>
+  		<td><?=$var['name']?></td>
+  		<td><?=$var['type']?></td>
+  		<td><?=$var['price']?> บาท</td>
+  		<td><?=$var['days']?> วัน</td>
+  		<td><?=$var['charge']?> บาท</td>
+  		<td><?=$var['total']?> เล่ม</td>
+  		
+  	</tr>
+   <?php }?>
+</table>

@@ -42,10 +42,51 @@ class ManageController extends Controller
      */
     public function actionIndex()
     {
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    	
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    	 
+    	echo $search;
+    	
+    	return $this->render('index', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    	
         $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
 
+    public function actionNewbook(){
+    	
+    	return $this->render('newbook');
+    }
+    
+    public function actionBooklist(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    	
+    	
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    	
+    	echo $search;
+    	 
+    	return $this->render('booklist', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    	return $this->render('booklist');
+    }
+   
     /**
      * Add book
      *
@@ -56,7 +97,8 @@ class ManageController extends Controller
         //config
         $request = Yii::$app->request;
         $baseUrl = \Yii::getAlias('@web');
-
+		
+        //get id edit , not id -> new 
         $id = $request->get('id',null);
         $name = $request->get('name',null);
         $type = $request->get('type',null);
@@ -64,6 +106,7 @@ class ManageController extends Controller
         $days = $request->get('days',null);
         $charge = $request->get('charge',null);
         $total = $request->get('total',null);
+        
         if($id == null){
           $book = new Book;
         }else {
@@ -83,8 +126,8 @@ class ManageController extends Controller
           echo "error";
         }
 
-        
         //waiting redirect
-        // return $this->redirect($baseUrl."/course/index");
+       	//กลับไปหน้ารายการหนังสือ 
+         return $this->redirect($baseUrl."/manage/booklist");
     }
 }
