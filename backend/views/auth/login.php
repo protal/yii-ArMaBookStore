@@ -20,7 +20,7 @@
     .form {
       position: relative;
       z-index: 1;
-      background: #FFFFFF;
+      background: #FFFFFF ;
       max-width: 360px;
       margin: 0 auto 100px;
       padding: 45px;
@@ -114,11 +114,11 @@
     }
 
     .container .info span .fa {
-      color: #EF3B3A;
+      color: #EF3B3A !important;
     }
 
     body {
-      background: #76b852;
+      background: #76b852 !important;
       /* fallback for old browsers */
       background: -webkit-linear-gradient(right, #76b852, #8DC26F);
       background: -moz-linear-gradient(right, #76b852, #8DC26F);
