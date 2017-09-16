@@ -48,4 +48,8 @@ class AuthController extends Controller
     {
         return $this->render('register');
     }
+    public function actionLogin()
+    {
+    	return $this->render('login');
+    }
 }
