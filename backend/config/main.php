@@ -8,7 +8,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-backend',
-	  'name'=>'Basic App',
+	  'name'=>'ArMaBookStore',
     'defaultRoute' => 'bookstore/index',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
