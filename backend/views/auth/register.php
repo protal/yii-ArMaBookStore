@@ -47,7 +47,7 @@
       <textarea class="form-control" name="Address" placeholder="กรอกข้อมูลที่อยู่โดยละเอียดน่ะค่ะ" rows="3"></textarea>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-md-12 col-md-offset-4">
   <button type="submit" class="btn btn-primary" name="Submit">ยืนยัน</button>
   </div>
 </form>
