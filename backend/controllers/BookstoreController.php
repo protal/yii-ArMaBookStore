@@ -41,7 +41,7 @@ class BookstoreController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "@backend/themes/adminlte/layouts/index";
+        // $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
 }
