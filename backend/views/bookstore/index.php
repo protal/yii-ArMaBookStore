@@ -53,7 +53,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
       <th data-field="name" data-sortable="true">ชื่อหนังสือ</th>
       <th data-field="salary" data-sortable="true">ประเภท</th>
       <th data-field="country" data-sortable="true">ราคา</th>
-      <th data-field="country" data-sortable="true">จำนวนวันที่ยื่ม</th>
+      <th data-field="country" data-sortable="true">จำนวนวันที่ยืม</th>
       <th data-field="country" data-sortable="true">ค่าปรับ</th>
        <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
     </thead>
