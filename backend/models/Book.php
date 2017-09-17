@@ -39,9 +39,7 @@ class Book extends \yii\mongodb\ActiveRecord
             'charge',
             'days',
             'total',
-        	'publisher',
-        	
-//         	
+        	  'publisher',
         ];
     }
 
@@ -49,7 +47,7 @@ class Book extends \yii\mongodb\ActiveRecord
      * @inheritdoc
      */
     public function rules()
-    {	
+    {
         return [
             [['_id', 'name', 'type', 'price', 'charge','days', 'total','publisher'], 'safe']
         ];
