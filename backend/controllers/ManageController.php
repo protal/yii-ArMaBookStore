@@ -141,7 +141,12 @@ class ManageController extends Controller
         }
 
         //waiting redirect
-       	//กลับไปหน้ารายการหนังสือ 
+       	//à¸�à¸¥à¸±à¸šà¹„à¸›à¸«à¸™à¹‰à¸²à¸£à¸²à¸¢à¸�à¸²à¸£à¸«à¸™à¸±à¸‡à¸ªà¸·à¸­ 
          return $this->redirect($baseUrl."/manage/booklist");
+    }
+    
+    public function actionBookhistory(){
+    	 
+    	return $this->render('bookhistory');
     }
 }
