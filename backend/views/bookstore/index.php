@@ -47,21 +47,26 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
   <table id="fresh-table" class="table">
     <thead>
-      <th data-field="id">ID</th>
+      <th data-field="id">เลือก</th>
       <th data-field="name" data-sortable="true">ชื่อหนังสือ</th>
       <th data-field="salary" data-sortable="true">ประเภท</th>
       <th data-field="country" data-sortable="true">ราคา</th>
       <th data-field="country" data-sortable="true">จำนวนวันที่ยื่ม</th>
-      <th data-field="city">City</th>
+      <th data-field="city">ค่าปรับ</th>
       <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
     </thead>
     <tbody>
       <tr>
-        <td>1</td>
-        <td>Dakota Rice</td>
-        <td>$36,738</td>
-        <td>Niger</td>
-        <td>Oud-Turnhout</td>
+        <td>
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+          </label>
+        </td>
+        <td>ขายหัวเราะ</td>
+        <td>การ์ตูน</td>
+        <td>10 ฿</td>
+        <td>7 วัน</td>
+        <td>10 ฿</td>
         <!-- <td></td> -->
       </tr>
     </tbody>
