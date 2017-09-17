@@ -1,4 +1,6 @@
 <?php
+$this->title = 'ArmaBook List';
+$baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
 $str = <<<EOT
 $('#fresh-table').bootstrapTable({
@@ -47,28 +49,32 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
   <table id="fresh-table" class="table">
     <thead>
-      <th data-field="id">เลือก</th>
+      <th data-field="name" data-sortable="true">เลือก</th>
       <th data-field="name" data-sortable="true">ชื่อหนังสือ</th>
       <th data-field="salary" data-sortable="true">ประเภท</th>
       <th data-field="country" data-sortable="true">ราคา</th>
-      <th data-field="country" data-sortable="true">จำนวนวันที่ยื่ม</th>
-      <th data-field="city">ค่าปรับ</th>
-      <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
+      <th data-field="country" data-sortable="true">จำนวนวันที่ยืม</th>
+      <th data-field="country" data-sortable="true">ค่าปรับ</th>
+       <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
     </thead>
     <tbody>
-      <tr>
-        <td>
+     
+      <?php foreach ($result as $var){?>
+	<tr>
+	<td>
           <label class="form-check-label">
             <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
           </label>
         </td>
-        <td>ขายหัวเราะ</td>
-        <td>การ์ตูน</td>
-        <td>10 ฿</td>
-        <td>7 วัน</td>
-        <td>10 ฿</td>
-        <!-- <td></td> -->
-      </tr>
+  		<td><?=$var['name']?></td>
+  		<td><?=$var['type']?></td>
+  		<td><?=$var['price']?> บาท</td>
+  		<td><?=$var['days']?> วัน</td>
+  		<td><?=$var['charge']?> บาท</td>
+  		<td></td>
+  	</tr>
+   <?php }?>
+      
     </tbody>
   </table>
 </div>
