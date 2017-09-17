@@ -66,7 +66,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
                   <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
                 </label>
               </td>
-        		<td><?=$var['namee']?></td>
+        		<td><?=$var['name']?></td>
         		<td><?=$var['type']?></td>
         		<td><?=$var['price']?> บาท</td>
         		<td><?=$var['days']?> วัน</td>
