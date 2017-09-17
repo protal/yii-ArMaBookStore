@@ -67,6 +67,19 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
   		
   	</tr>
   	 <?php }?>
+      <tr>
+        <td>
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+          </label>
+        </td>
+        <td>ขายหัวเราะ</td>
+        <td>การ์ตูน</td>
+        <td>10 ฿</td>
+        <td>7 วัน</td>
+        <td>10 ฿</td>
+        <!-- <td></td> -->
+      </tr>
     </tbody>
   </table>
 </div>
