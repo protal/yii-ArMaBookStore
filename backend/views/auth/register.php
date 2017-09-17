@@ -36,7 +36,7 @@ $baseUrl=\Yii::getAlias('@web');
        </div>
      </div>
      <div class="form-group">
-       <label for="inputPassword3" class="col-sm-2 control-label">PassWord :</label>
+       <label for="inputPassword3" class="col-sm-2 control-label">Password :</label>
        <div class="col-sm-6">
          <input type="password" class="form-control" name="password" placeholder="6-8 Charecter">
        </div>
