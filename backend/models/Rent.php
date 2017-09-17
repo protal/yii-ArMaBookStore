@@ -34,7 +34,7 @@ class Rent extends \yii\mongodb\ActiveRecord
         return [
             '_id',
             'Customer_id',
-            'Book_id',
+            'Books',
             'start_at',
             'end_at',
             'price',
