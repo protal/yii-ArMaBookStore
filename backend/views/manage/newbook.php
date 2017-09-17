@@ -1,4 +1,5 @@
 <?php
+$this->title = 'ArmaBook Add New Books';
 $baseUrl=\Yii::getAlias('@web');
 ?>
 
