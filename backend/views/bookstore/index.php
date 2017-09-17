@@ -1,4 +1,6 @@
 <?php
+$this->title = 'ArmaBook List';
+$baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
 $str = <<<EOT
 $('#fresh-table').bootstrapTable({
@@ -47,23 +49,24 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
   <table id="fresh-table" class="table">
     <thead>
-      <th data-field="id">ID</th>
+      
       <th data-field="name" data-sortable="true">ชื่อหนังสือ</th>
       <th data-field="salary" data-sortable="true">ประเภท</th>
       <th data-field="country" data-sortable="true">ราคา</th>
       <th data-field="country" data-sortable="true">จำนวนวันที่ยื่ม</th>
-      <th data-field="city">City</th>
+      
       <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Dakota Rice</td>
-        <td>$36,738</td>
-        <td>Niger</td>
-        <td>Oud-Turnhout</td>
-        <!-- <td></td> -->
-      </tr>
+      <?php foreach ($result as $var){?>
+	<tr>
+  		<td><?=$var['name']?></td>
+  		<td><?=$var['type']?></td>
+  		<td><?=$var['price']?></td>
+  		<td><?=$var['days']?></td>
+  		
+  	</tr>
+  	 <?php }?>
     </tbody>
   </table>
 </div>
