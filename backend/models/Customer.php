@@ -16,14 +16,14 @@ use Yii;
  * @property mixed $email
  * @property mixed $phone_number
  */
-class Rent extends \yii\mongodb\ActiveRecord
+class Customer extends \yii\mongodb\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function collectionName()
     {
-        return ['BookStore', 'Rent'];
+        return ['BookStore', 'customer'];
     }
 
     /**
@@ -33,12 +33,13 @@ class Rent extends \yii\mongodb\ActiveRecord
     {
         return [
             '_id',
-            'Customer',
-            'Books',
-            'start_at',
-            'end_at',
+            'name',
+            'type',
             'price',
             'charge',
+            'days',
+            'total',
+        	  'publisher',
         ];
     }
 
@@ -48,7 +49,7 @@ class Rent extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['_id', 'Customer_id', 'Book_id', 'start_at', 'end_at', 'price', 'charge'], 'safe']
+            [['_id', 'name', 'type', 'price', 'charge','days', 'total','publisher'], 'safe']
         ];
     }
 }
