@@ -64,6 +64,28 @@ class BookstoreController extends Controller
         // $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
+    public function actionHistory()
+    {
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    
+    	echo $search;
+    
+    	return $this->render('history', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    
+    
+    	// $this->layout = "@backend/themes/adminlte/layouts/index";
+    	return $this->render('history');
+    }
 
 
     public function actionRent()

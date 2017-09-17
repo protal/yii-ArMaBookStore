@@ -80,6 +80,6 @@ class AuthController extends Controller
       }else {
         echo "error";
       }
-       return $this->redirect($baseUrl."/auth/register");
+       return $this->redirect($baseUrl."/auth/login");
       }
     }

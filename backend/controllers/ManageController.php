@@ -61,6 +61,20 @@ class ManageController extends Controller
         $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
+    
+    
+    public function actionEditbook()
+    {
+    	$request =Yii::$app->request;
+  		$id=$request->get('id',null);
+  		
+  		$model = book::findOne($id);
+  		return $this->render('editbook',[
+  				'model'=>$model
+  		]);
+    }
+    
+    
 
     public function actionNewbook(){
     	
