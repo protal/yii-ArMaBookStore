@@ -7,7 +7,7 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\Rent;
-
+use backend\models\Book;
 
 /**
  * Site controller
@@ -36,6 +36,7 @@ class BookstoreController extends Controller
         ];
     }
 
+
     /**
      * Displays homepage.
      *
@@ -43,6 +44,23 @@ class BookstoreController extends Controller
      */
     public function actionIndex()
     {
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+
+    	echo $search;
+
+    	return $this->render('index', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+
+
         // $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
