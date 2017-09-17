@@ -44,4 +44,17 @@ class BookstoreController extends Controller
         // $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
+
+
+    public function actionRent()
+    {
+        $book_json = '{"cid":1,"items":[{"id":1},{"id":1}]}';
+        $books =  json_decode($book_json);
+        $customer_id = $books->cid;
+        foreach ($books->items as $it) {
+          echo $it->id."<br>";
+        }
+
+
+    }
 }
