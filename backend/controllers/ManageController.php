@@ -175,4 +175,8 @@ class ManageController extends Controller
     	return $this->redirect($baseUrl."/manage/booklist");
     
     }
+    public function actionBookhistory(){
+    	 
+    	return $this->render('bookhistory');
+    }
 }
