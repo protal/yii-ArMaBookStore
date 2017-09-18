@@ -72,7 +72,7 @@ class AuthController extends Controller
       $customer->lastname= $lname;
       $customer->phone= $phone;
       $customer->email= $email;
-      $customer->passWord= $pass;
+      $customer->password=  md5($pass);
       $customer->address= $address;
 
       if($customer->save()){
@@ -80,6 +80,6 @@ class AuthController extends Controller
       }else {
         echo "error";
       }
-       return $this->redirect($baseUrl."/auth/register");
+       return $this->redirect($baseUrl."/auth/login");
       }
     }

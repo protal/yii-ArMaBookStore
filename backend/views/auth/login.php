@@ -135,12 +135,12 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <form class="login-form">
+      <form class="login-form" >
         <input name = "lg_name" type="text" placeholder="username">
         <input name = "lg_password" type="password" placeholder="password">
         <button>login</button>
         <p class="message">
-          <a href="#">Register</a>
+          <a href="register">Register</a>
         </p>
       </form>
     </div>
