@@ -18,9 +18,10 @@ class AppAsset extends AssetBundle
 
     ];
     public $js = [
-      'fresh-table/js/jquery-1.11.2.min.js',
+      'jquery-3.2.1.min.js',
       'bootstrap/js/bootstrap.js',
       'fresh-table/js/bootstrap-table.js',
+
 
 
     ];
