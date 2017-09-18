@@ -55,6 +55,8 @@ if (Yii::$app->controller->action->id === 'login') {
         </div>
 
       <?php $this->endBody() ?>
+      <!-- https://lodash.com/ -->
+    <script src="//cdn.jsdelivr.net/lodash/3.8.0/lodash.min.js"></script>
     </body>
     </html>
     <?php $this->endPage() ?>

@@ -61,6 +61,35 @@ class ManageController extends Controller
         $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
+    public function actionEdit(){
+    	$request =Yii::$app->request;
+    	$id=$request->get('id',null);
+    
+    	$model = book::findOne($id);
+    	return $this->render('edit',[
+    			'model'=>$model
+    	]);
+    }
+       
+    public function actionBookedit(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    	
+    	
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    	
+    	echo $search;
+    	 
+    	return $this->render('bookedit', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    	return $this->render('bookedit');
+    }
 
     public function actionNewbook(){
     	
@@ -96,7 +125,7 @@ class ManageController extends Controller
     {
         //config
         $request = Yii::$app->request;
-        $baseUrl = \Yii::getAlias('@web');
+        
 		
         //get id edit , not id -> new 
         $id = $request->get('id',null);
@@ -106,6 +135,10 @@ class ManageController extends Controller
         $days = $request->get('days',null);
         $charge = $request->get('charge',null);
         $total = $request->get('total',null);
+        
+        $baseUrl = \Yii::getAlias('@web');
+        
+        $model;
         
         if($id == null){
           $book = new Book;
@@ -129,5 +162,21 @@ class ManageController extends Controller
         //waiting redirect
        	//กลับไปหน้ารายการหนังสือ 
          return $this->redirect($baseUrl."/manage/booklist");
+    }
+    
+    public function actionDelete(){
+    	$request =Yii::$app->request;
+    	$id=$request->get('id',null);
+    	$baseUrl=\Yii::getAlias('@web');
+    
+    	$model = book::findOne($id);
+    	$model->delete();
+    
+    	return $this->redirect($baseUrl."/manage/booklist");
+    
+    }
+    public function actionBookhistory(){
+    	 
+    	return $this->render('bookhistory');
     }
 }

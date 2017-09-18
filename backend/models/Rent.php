@@ -23,7 +23,7 @@ class Rent extends \yii\mongodb\ActiveRecord
      */
     public static function collectionName()
     {
-        return ['BookStore', 'Rent'];
+        return ['BookStore', 'rent'];
     }
 
     /**
@@ -33,10 +33,9 @@ class Rent extends \yii\mongodb\ActiveRecord
     {
         return [
             '_id',
-            'Customer',
-            'Books',
+            'customer',
+            'books',
             'start_at',
-            'end_at',
             'price',
             'charge',
         ];
@@ -48,7 +47,7 @@ class Rent extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['_id', 'Customer_id', 'Book_id', 'start_at', 'end_at', 'price', 'charge'], 'safe']
+            [['_id', 'Customer', 'Book_id', 'start_at', 'price', 'charge'], 'safe']
         ];
     }
 }

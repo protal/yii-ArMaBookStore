@@ -14,6 +14,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
+    'timeZone' => 'Asia/Bangkok',
     'components' => [
     	'view' => [
     			'theme' => [
