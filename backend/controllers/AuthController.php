@@ -22,7 +22,11 @@ class AuthController extends Controller
 
         ];
     }
-
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+        return parent::beforeAction($action);
+    }
     /**
      * @inheritdoc
      */
@@ -42,7 +46,6 @@ class AuthController extends Controller
      */
     public function actionIndex()
     {
-        $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
     public function actionRegister()
@@ -52,6 +55,25 @@ class AuthController extends Controller
     public function actionLogin()
     {
     	return $this->render('login');
+    }
+    public function actionLoginaction()
+    {
+      //config
+      $request = Yii::$app->request;
+      $baseUrl = \Yii::getAlias('@web');
+
+      $email = $request->post('email',null);
+      $pass = $request->post('password',null);
+
+      $customer = Customer::findOne(['email'=>$email]);
+      if(isset($customer) && ( md5($pass) == $customer->password ))
+      {
+        echo "TRUE";
+      }
+      else {
+        echo "FALSE";
+      }
+
     }
     public function actionRegistersave()
     {
@@ -88,7 +110,7 @@ class AuthController extends Controller
         //config
         $request = Yii::$app->request;
         $baseUrl = \Yii::getAlias('@web');
-        
+
 
       }
     }

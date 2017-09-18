@@ -35,7 +35,7 @@ class Customer extends \yii\mongodb\ActiveRecord
             '_id',
             'firstname',
             'lastname',
-            'phone'
+            'phone',
             'email',
             'password',
             'address',
