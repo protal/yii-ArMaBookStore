@@ -82,4 +82,13 @@ class AuthController extends Controller
       }
        return $this->redirect($baseUrl."/auth/register");
       }
+
+      public function actionLoginsave()
+      {
+        //config
+        $request = Yii::$app->request;
+        $baseUrl = \Yii::getAlias('@web');
+        
+
+      }
     }
