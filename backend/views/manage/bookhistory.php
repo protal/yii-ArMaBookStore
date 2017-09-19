@@ -37,7 +37,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
  ?>
 
-<div class="fresh-table full-color-azure">
+<div class="fresh-table full-color-orange">
   <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
   Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
   -->
