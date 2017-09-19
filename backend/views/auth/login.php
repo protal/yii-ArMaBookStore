@@ -25,7 +25,7 @@ $baseUrl=\Yii::getAlias('@web');
              </div>
 
              <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
-             <a class="btn btn-link" href="/auth/register"> Register </a>
+             <a href="<?= $baseUrl."/auth/register"?>"><button type="button" class="btn btn-link">Register</button></a>
        </form>
      </div>
    </div>
