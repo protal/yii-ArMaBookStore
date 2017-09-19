@@ -102,6 +102,15 @@ EOT;
 $this->registerJS($str,View::POS_LOAD,'form-js');
 
  ?>
+ <div class="mb-4">
+
+   <div class="pull-right">
+     <a href="<?=$baseUrl."/auth/login"?>" class="btn btn-primary">
+       Login
+     </a>
+   </div>
+   <br>
+ </div>
 
 <div class="fresh-table full-color-azure">
   <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
