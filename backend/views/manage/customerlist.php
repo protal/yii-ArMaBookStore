@@ -12,6 +12,8 @@ $baseUrl=\Yii::getAlias('@web');
 		<th data-field="phone" data-sortable="true">เบอโทรศัพท์</th>
 		<th data-field="email" data-sortable="true">อีเมล์</th>
 		<th data-field="address" data-sortable="true">ที่อยู่</th>
+		<th data-field="total" data-sortable="true">แก้ไข</th>
+		<th data-field="total" data-sortable="true">ลบ</th>
 	
     </tr>
 	
@@ -23,7 +25,7 @@ $baseUrl=\Yii::getAlias('@web');
   		<td><?=$var['email']?></td>
   		<td><?=$var['address']?></td>
   		
-  		<td><a href="<?= $baseUrl."/manage/customeredit?id=".$var['_id']?>"><button type="button" class="btn btn-warning">แก้ไข</button></a></td>
+  		<td><a href="<?= $baseUrl."/manage/editcustomer?id=".$var['_id']?>"><button type="button" class="btn btn-warning">แก้ไข</button></a></td>
   		<td><a href="<?= $baseUrl."/manage/customerdelete?id=".$var['_id']?>"><button type="button" class="btn btn-danger">ลบ</button></a></td>
   		
   	</tr>
@@ -32,5 +34,5 @@ $baseUrl=\Yii::getAlias('@web');
 </table>
 
 
-<td><a href="<?= $baseUrl."/manage/newbook"?>"><button type="button" class="btn btn-info">เพิ่มหนังสือ</button></a></td>
+<td><a href="<?= $baseUrl."/manage/newcustomer"?>"><button type="button" class="btn btn-info">เพิ่ม customer</button></a></td>
 

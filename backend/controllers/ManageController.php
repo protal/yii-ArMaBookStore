@@ -182,7 +182,7 @@ class ManageController extends Controller
     	 
     	$query = customer::find();
     	if($search != null ){
-    		$query->where(["name" =>$search]);
+    		$query->where(["firstname" =>$search]);
     	}
     	$result = $query->all();
     	 
@@ -241,7 +241,7 @@ class ManageController extends Controller
     
     	//waiting redirect
     	//กลับไปหน้ารายการหนังสือ
-    	return $this->redirect($baseUrl."/customer/customerlist");
+    	return $this->redirect($baseUrl."/manage/customerlist");
     }
     
     
@@ -253,10 +253,10 @@ class ManageController extends Controller
     	$model = customer::findOne($id);
     	$model->delete();
     
-    	return $this->redirect($baseUrl."/customer/customerlist");
+    	return $this->redirect($baseUrl."/manage/customerlist");
     
     }
-    public function actionCustomeredit(){
+    public function actionEditcustomer(){
     	$request =Yii::$app->request;
     	$id=$request->get('id',null);
     
