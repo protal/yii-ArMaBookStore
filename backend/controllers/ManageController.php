@@ -261,7 +261,7 @@ class ManageController extends Controller
     	$id=$request->get('id',null);
     
     	$model = customer::findOne($id);
-    	return $this->render('edit',[
+    	return $this->render('editcustomer',[
     			'model'=>$model
     	]);
     }
