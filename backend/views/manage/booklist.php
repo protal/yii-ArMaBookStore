@@ -13,6 +13,8 @@ $baseUrl=\Yii::getAlias('@web');
 		<th data-field="days" data-sortable="true">จำนวนวันที่ยืม</th>
 		<th data-field="charge" data-sortable="true">ค่าปรับ</th>
 		<th data-field="total" data-sortable="true">จำนวนหนังสือ</th>
+		<th data-field="total" data-sortable="true">แก้ไข</th>
+		<th data-field="total" data-sortable="true">ลบ</th>
     </tr>
 	
 	<?php foreach ($result as $var){?>
@@ -23,6 +25,8 @@ $baseUrl=\Yii::getAlias('@web');
   		<td><?=$var['days']?> วัน</td>
   		<td><?=$var['charge']?> บาท</td>
   		<td><?=$var['total']?> เล่ม</td>
+  		<td><a href="<?= $baseUrl."/manage/edit?id=".$var['_id']?>"><button type="button" class="btn btn-warning">แก้ไข</button></a></td>
+  		<td><a href="<?= $baseUrl."/manage/delete?id=".$var['_id']?>"><button type="button" class="btn btn-danger">ลบ</button></a></td>
   		
   	</tr>
    <?php }?>
@@ -32,4 +36,3 @@ $baseUrl=\Yii::getAlias('@web');
 
 <td><a href="<?= $baseUrl."/manage/newbook"?>"><button type="button" class="btn btn-info">เพิ่มหนังสือ</button></a></td>
 
-<td><a href="<?= $baseUrl."/manage/bookedit"?>"><button type="button" class="btn btn-warning">แก้ไข</button></a></td>

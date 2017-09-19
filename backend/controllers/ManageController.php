@@ -71,25 +71,6 @@ class ManageController extends Controller
     	]);
     }
        
-    public function actionBookedit(){
-    	$request = Yii::$app->request;
-    	$search = $request->get('search',null);
-    	
-    	
-    	$query = book::find();
-    	if($search != null ){
-    		$query->where(["name" =>$search]);
-    	}
-    	$result = $query->all();
-    	
-    	echo $search;
-    	 
-    	return $this->render('bookedit', [
-    			'input' => $search,
-    			'result' => $result
-    	]);
-    	return $this->render('bookedit');
-    }
 
     public function actionNewbook(){
     	
