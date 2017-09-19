@@ -62,9 +62,9 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
       <?php foreach ($result as $var){?>
 	       <tr>
               
-        		<td><?=$var['name']?></td>
-        		<td><?=$var['']?></td>
-        		<td><?=$var['']?></td>
+        		<td>1</td>
+        		<td>2</td>
+        		<td>3</td>
         		
   	   </tr>
    <?php }?>
