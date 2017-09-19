@@ -10,6 +10,9 @@ $baseUrl=\Yii::getAlias('@web');
   			<option value="การ์ตูน">การ์ตูน</option>
  		 	<option value="นิตยสาร">นิตยสาร </option>
  		 	<option value="วารสาร">วารสาร</option>
+ 		 	<option value="นวนิยาย">นวนิยาย</option>
+ 		 	<option value="บันเทิงคดี">บันเทิงคดี</option>
+ 		 	<option value="สารคดี">สารคดี</option>
 
  		</select>
 
