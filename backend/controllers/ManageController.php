@@ -162,6 +162,21 @@ class ManageController extends Controller
 
     }
     public function actionBookhistory(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    	
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    	
+    	echo $search;
+    	
+    	return $this->render('bookhistory', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
 
     	return $this->render('bookhistory');
     }
