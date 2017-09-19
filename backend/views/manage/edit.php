@@ -4,28 +4,33 @@ $baseUrl=\Yii::getAlias('@web');
 ?>
 
 <form action="<?=$baseUrl."/manage/booksave"?>" method="get">
-  	
+
   <input type="hidden" name="id" value="<?=$model['_id']?>">
   <div class="form-group">
-  	
+
   	<div class="dropdown">
   		<label>ประเภทหนังสือ  :</label>
     	<select name="type">
   			<option value="การ์ตูน">การ์ตูน</option>
  		 	<option value="นิตยสาร">นิตยสาร </option>
  		 	<option value="วารสาร">วารสาร</option>
- 		 	
+
  		</select>
-  
+
   	</div>
 
   	<br>
-  
+
   	<div class="form-group" >
     	<label>ชื่อหนังสือ : </label>
     	<input type="text" class="form-control" name="name"  value="<?=$model['name']?>" >
   	</div>
-   
+    <div class="form-group" >
+      <div class="col-md-3">
+    	<label>เล่มที่  </label>
+    	<input type="text" class="form-control" name="version" value="<?=$model['version']?>" >
+  	</div>
+
    	<div class="form-group row">
   		<div class="col-xs-3">
     		<label for="ex1">ราคา</label>
@@ -43,14 +48,14 @@ $baseUrl=\Yii::getAlias('@web');
     		<input type="text" class="form-control" name="days" value="<?=$model['days']?>" >
   		</div>
   </div>
-   
+
     <div class="form-group row" >
 		<div class="col-xs-3">
     		<label>จำนวนหนังสือที่เพิ่ม</label>
     		<input type="text" class="form-control" name="total" value="<?=$model['total']?>"  >
   		</div>
   </div>
-   
-   
+
+
 <button type="submit" class="btn btn-primary">ยืนยัน</button>
 </form>
