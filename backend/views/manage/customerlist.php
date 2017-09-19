@@ -20,7 +20,7 @@ $baseUrl=\Yii::getAlias('@web');
 	<?php foreach ($result as $var){?>
 	<tr>
   		<td><?=$var['firstname']?></td>
-  		<td><?=$var['firstname']?></td>
+  		<td><?=$var['lastname']?></td>
   		<td><?=$var['phone']?></td>
   		<td><?=$var['email']?></td>
   		<td><?=$var['address']?></td>
