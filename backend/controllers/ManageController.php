@@ -153,13 +153,24 @@ class ManageController extends Controller
 
     public function actionDelete(){
     	$request =Yii::$app->request;
+    	$session = Yii::$app->session;
+    	
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
     	$model = book::findOne($id);
     	$model->delete();
 
-    	return $this->redirect($baseUrl."/manage/booklist");
+    	if($model->delete()){
+    		$session->setFlash('danger', " ลบผิดพลาด");
+    		return $this->redirect($baseUrl."/manage/booklist");
+    	
+    	}
+    	else {
+    		//echo "success";
+    		$session->setFlash('success', "ลบสำเร็จ");
+    		return $this->redirect($baseUrl."/manage/booklist");
+    	}
 
     }
     public function actionBookhistory(){
@@ -262,21 +273,31 @@ class ManageController extends Controller
           return $this->redirect($baseUrl."/manage/customeredit");
         }
 
-    	//waiting redirect
-    	//กลับไปหน้ารายการหนังสือ
-    	//return $this->redirect($baseUrl."/manage/customerlist");
+    	
     }
 
 
     public function actionCustomerdelete(){
     	$request =Yii::$app->request;
+    	$session = Yii::$app->session;
+    	
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
     	$model = customer::findOne($id);
     	$model->delete();
 
-    	return $this->redirect($baseUrl."/manage/customerlist");
+    	if($model->delete()){
+    		$session->setFlash('danger', " ลบผิดพลาด");
+    		return $this->redirect($baseUrl."/manage/customerlist");
+    		
+    	}
+    	else {
+    		//echo "success";
+    		$session->setFlash('success', "ลบสำเร็จ");
+    		return $this->redirect($baseUrl."/manage/customerlist");
+    	}
+    	// return $this->redirect($baseUrl."/manage/customerlist");
 
     }
     public function actionEditcustomer(){
