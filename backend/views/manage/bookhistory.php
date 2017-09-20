@@ -20,7 +20,7 @@ use yii\web\View;
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
   				<option value="จัดส่งแล้ว">จัดส่งแล้ว</option>
   				<option value="ถึงกำหนดคืน">ถึงกำหนดคืน</option>
-					<option value="คืนแล้ว">คืนแล้ว</option>
+				<option value="คืนแล้ว">คืนแล้ว</option>
   				<option value="คืนช้าเสียค่าปรับ">คืนช้าเสียค่าปรับ</option>
 				<option value="ยกเลิกการจัดส่ง">ยกเลิกการจัดส่ง</option>
 			</select>

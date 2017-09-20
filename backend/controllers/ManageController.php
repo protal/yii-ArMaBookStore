@@ -191,6 +191,7 @@ class ManageController extends Controller
     	]);
 
     	return $this->render('bookhistory');
+    	
     }
 
 
