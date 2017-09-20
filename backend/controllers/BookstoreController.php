@@ -114,7 +114,6 @@ class BookstoreController extends Controller
         // $rent->price = '20';
         // $rent->books = array('59bc068b1167e515231c6b52','59be9e891167e5040b6ecd72');
         // echo $rent->save();
-
-
+        echo "Success";
     }
 }

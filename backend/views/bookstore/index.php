@@ -1,6 +1,7 @@
 <?php
 $this->title = 'ArmaBook List';
-$baseUrl=\Yii::getAlias('@web');
+$baseUrl = \Yii::getAlias('@web');
+$csrf = "'".\yii::$app->request->csrfParam."':'".\yii::$app->request->csrfToken."'";
 use yii\web\View;
 $str = <<<EOT
 var price = 0;
@@ -99,12 +100,14 @@ $('#fresh-table').on('uncheck-all.bs.table.bs.table', function (e,rows) {
 
 $( "#rent" ).click(function() {
   $.ajax({
-    url: _saveAllDevicesUrl,
+    url: '$baseUrl/bookstore/rent',
     type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify(postData),
-    // success: _madeSave.bind(this)
+    data: {books:JSON.stringify(books),$csrf},
+    success: function(data) {
+      console.log(data);
+    },
 });
+
 });
 
 EOT;
@@ -181,4 +184,30 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
     </tbody>
   </table>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- load -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div> -->
 </div>

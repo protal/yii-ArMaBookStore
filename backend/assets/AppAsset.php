@@ -19,6 +19,7 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
       'jquery-3.2.1.min.js',
+      'popper/dist/umd/popper.js',
       'bootstrap/js/bootstrap.js',
       'fresh-table/js/bootstrap-table.js',
 
