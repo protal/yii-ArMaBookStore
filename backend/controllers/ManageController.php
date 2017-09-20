@@ -222,6 +222,7 @@ class ManageController extends Controller
     {
     	//config
     	$request = Yii::$app->request;
+    	$session = Yii::$app->session;
 
 
     	//get id edit , not id -> new
@@ -251,15 +252,19 @@ class ManageController extends Controller
     	$customer->password = $password;
     	$customer->address = $address;
 
-    	if($customer->save()){
-    		echo "success";
-    	}else {
-    		echo "error";
-    	}
+     	if($customer->save()){
+          //echo "success";
+          $session->setFlash('success', "บันทึกสำเร็จ");
+          return $this->redirect($baseUrl."/manage/customerlist");
+        }
+        else {
+          $session->setFlash('danger', " แก้ไขผิดพลาด");
+          return $this->redirect($baseUrl."/manage/customeredit");
+        }
 
     	//waiting redirect
     	//กลับไปหน้ารายการหนังสือ
-    	return $this->redirect($baseUrl."/manage/customerlist");
+    	//return $this->redirect($baseUrl."/manage/customerlist");
     }
 
 
