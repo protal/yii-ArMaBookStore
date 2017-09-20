@@ -54,13 +54,30 @@ class AuthController extends Controller
     }
     public function actionLogin()
     {
-    	return $this->render('login');
+      $request = Yii::$app->request;
+      $baseUrl = \Yii::getAlias('@web');
+      $session = Yii::$app->session;
+
+      if($session->has('user'))
+      {
+        return $this->redirect($baseUrl."/");
+      }else {
+        return $this->render('login');
+      }
+    }
+    public function actionLogout()
+    {
+      $session = Yii::$app->session;
+      $baseUrl = \Yii::getAlias('@web');
+      $session->remove('user');
+      return $this->redirect($baseUrl."/");
     }
     public function actionLoginaction()
     {
       //config
       $request = Yii::$app->request;
       $baseUrl = \Yii::getAlias('@web');
+      $session = Yii::$app->session;
 
       $email = $request->post('email',null);
       $pass = $request->post('password',null);
@@ -68,10 +85,13 @@ class AuthController extends Controller
       $customer = Customer::findOne(['email'=>$email]);
       if(isset($customer) && ( md5($pass) == $customer->password ))
       {
-        echo "TRUE";
+        $session->set('user', $customer);
+        $session->setFlash('success', " ยินดีต้อนรับเข้าสู่ระบบ");
+        return $this->redirect($baseUrl."/");
       }
       else {
-        echo "FALSE";
+        $session->setFlash('danger', " ชื่อใช้หรือรหัสผ่านไม่ถูก กรุณาเข้าสู่ระบบใหม่อีกครั้ง");
+        return $this->redirect($baseUrl."/auth/login");
       }
 
     }

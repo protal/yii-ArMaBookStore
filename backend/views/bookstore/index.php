@@ -97,19 +97,50 @@ $('#fresh-table').on('uncheck-all.bs.table.bs.table', function (e,rows) {
   console.log(books);
 });
 
+$( "#rent" ).click(function() {
+  $.ajax({
+    url: _saveAllDevicesUrl,
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(postData),
+    // success: _madeSave.bind(this)
+});
+});
 
 EOT;
 $this->registerJS($str,View::POS_LOAD,'form-js');
 
  ?>
- <div class="mb-4">
+ <div class="row">
 
-   <div class="pull-right">
-     <a href="<?=$baseUrl."/auth/login"?>" class="btn btn-primary">
-       Login
-     </a>
-   </div>
-   <br>
+    <div class="col-12">
+      <div class="pull-left">
+        <h1>ArmaBookStore</h1>
+      </div>
+       <div class="pull-right text-right">
+         <?php if (isset($user)): ?>
+
+           <?=$user->firstname?>  <?=$user->lastname?>
+           <a href="<?=$baseUrl."/auth/logout"?>">ออกจากระบบ</a>
+
+             <p>จำนวนหนังสือทั้งหมด <b id="book_count">0</b> เล่ม <br> รวม <b id="price">0</b> บาท </p>
+             <button type="button" class="btn btn-success btn-sm pull-right" id="rent">
+               ยืมเลย
+             </button>
+             <br>
+             <br>
+         <?php else: ?>
+           <a href="<?=$baseUrl."/auth/login"?>" class="btn btn-primary">
+             Login
+           </a>
+           <br>
+           <br>
+         <?php endif; ?>
+
+       </div>
+       <br>
+
+     </div>
  </div>
 
 <div class="fresh-table full-color-azure">
@@ -118,8 +149,10 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
   -->
 
   <div class="toolbar">
-    <button class="btn btn-default">รายการหนังสือ</button>
-    <button class="btn btn-default">ประวัติการยืม</button>
+    <a href="<?=$baseUrl."/bookstore"?>" class="btn btn-default">รายการหนังสือ</a>
+    <?php if (isset($user)): ?>
+      <a href="<?=$baseUrl."/bookstore/history"?>" class="btn btn-default">ประวัติการยืม</a>
+    <?php endif; ?>
   </div>
   <table id="fresh-table" data-click-to-select="true" class="table">
     <thead>
@@ -148,13 +181,4 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 
     </tbody>
   </table>
-</div>
-<div class="row justify-content-md-center mt-3">
-  <div class="col-4 text-center">
-    <p>จำนวนหนังสือทั้งหมด <b id="book_count">0</b> เล่ม</p>
-    <p>ราคา <b id="price">0</b> บาท</p>
-    <button type="button" class="btn btn-success" id="rent">
-      ยืมเลย
-    </button>
-  </div>
 </div>
