@@ -309,4 +309,24 @@ class ManageController extends Controller
     			'model'=>$model
     	]);
     }
+    
+    public function actionCustomerhistory(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    
+    	$query = customer::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    
+    	echo $search;
+    
+    	return $this->render('customerhistory', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    
+    	return $this->render('customerhistory');
+    }
 }
