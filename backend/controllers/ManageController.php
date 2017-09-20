@@ -8,7 +8,7 @@ use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\Book;
 use backend\models\Customer;
-
+use backend\models\Rent;
 
 /**
  * Site controller
@@ -177,10 +177,7 @@ class ManageController extends Controller
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
 
-    	$query = book::find();
-    	if($search != null ){
-    		$query->where(["name" =>$search]);
-    	}
+    	$query = Rent::find();
     	$result = $query->all();
 
     	echo $search;
@@ -189,8 +186,11 @@ class ManageController extends Controller
     			'input' => $search,
     			'result' => $result
     	]);
+    	
+    	
 
     	return $this->render('bookhistory');
+    	
     }
 
 
