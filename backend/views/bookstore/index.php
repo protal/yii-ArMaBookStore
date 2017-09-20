@@ -104,7 +104,7 @@ $( "#rent" ).click(function() {
     type: 'POST',
     data: {books:JSON.stringify(books),$csrf},
     success: function(data) {
-      $('#loading').hide();
+      t1 = window.setTimeout(function(){ window.location = '$baseUrl/bookstore/history'; },1000);
       console.log(data);
 
     },
@@ -129,7 +129,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
            <a href="<?=$baseUrl."/auth/logout"?>">ออกจากระบบ</a>
 
              <p>จำนวนหนังสือทั้งหมด <b id="book_count">0</b> เล่ม <br> รวม <b id="price">0</b> บาท </p>
-             <button type="button" class="btn btn-success btn-sm pull-right" id="rent" data-toggle="modal" data-target="#loadingx">
+             <button type="button" class="btn btn-success btn-sm pull-right" id="rent" data-toggle="modal" data-target="#loading">
                ยืมเลย
              </button>
              <br>

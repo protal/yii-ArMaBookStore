@@ -105,9 +105,8 @@ class BookstoreController extends Controller
         $books =  json_decode($book_json);
 
 
-        $customer = '59be870341c514f29066e219';
         $rent = new Rent();
-        $rent->customer = '1';
+        $rent->customer = Yii::$app->session->get('user')['_id'];
         $rent->start_at = date('m-d-y',strtotime("now"));
         $b = array();
         foreach ($books as $book) {
