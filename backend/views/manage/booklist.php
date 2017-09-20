@@ -4,6 +4,16 @@ $baseUrl=\Yii::getAlias('@web');
 ?>
 
 
+<div class="search">
+  <form class="" action="" method="get">
+    <input type="text" name="search" placeholder="Search" value="<?php echo $search?>" />
+     <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+  </form>
+
+
+<br>
+
 <table border="1" class="table table-striped">
 
 	<tr>
