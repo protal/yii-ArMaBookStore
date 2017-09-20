@@ -11,7 +11,7 @@ use yii\web\View;
 		<th  data-field="" data-sortable="true">สถานะ</th>
     </tr>
 
-	
+
       </td>
       <td>1</td>
   		<td>1</td>
@@ -19,15 +19,13 @@ use yii\web\View;
   			<select>
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
   				<option value="จัดส่งแล้ว">จัดส่งแล้ว</option>
-  				<option value="ใกล้ถึงกำหนดคืน">ใกล้ถึงกำหนดคืน</option>
+  				<option value="ถึงกำหนดคืน">ถึงกำหนดคืน</option>
+					<option value="คืนแล้ว">คืนแล้ว</option>
   				<option value="คืนช้าเสียค่าปรับ">คืนช้าเสียค่าปรับ</option>
 				<option value="ยกเลิกการจัดส่ง">ยกเลิกการจัดส่ง</option>
-			</select> 
-		</td>	
+			</select>
+		</td>
   	</tr>
 </table>
 
 <td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
-
-
-
