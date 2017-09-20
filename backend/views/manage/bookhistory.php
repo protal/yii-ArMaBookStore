@@ -1,4 +1,6 @@
 <?php
+use backend\models\Book;
+use backend\models\Customer;
 $this->title = 'BookStore Log File';
 $baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
@@ -13,8 +15,18 @@ use yii\web\View;
 
 
       </td>
-      <td>1</td>
-  		<td>1</td>
+      <?php foreach ($result as $var){?>
+	<tr>
+  		<td><?=$var['_id']?></td>
+  		<td><?php 
+  		foreach ($var['books'] as $b)
+  		{
+  			$book = Book::findOne($b['book_id']);
+  			echo $book['name']."   เล่ม       ".$book['version']."<br>";
+  		} 
+  		?>
+  		
+  		</td>
   		<td>
   			<select>
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
@@ -25,7 +37,9 @@ use yii\web\View;
 				<option value="ยกเลิกการจัดส่ง">ยกเลิกการจัดส่ง</option>
 			</select>
 		</td>
+
   	</tr>
+   <?php }?>
 </table>
 
 <td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
