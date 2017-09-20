@@ -48,6 +48,15 @@ class BookstoreController extends Controller
     {
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
+      $session = Yii::$app->session;
+
+      if($session->has('user')){
+        $user  = $session->get('user');
+      }else {
+        $user = null;
+      }
+
+
 
     	$query = book::find();
     	if($search != null ){
@@ -59,32 +68,31 @@ class BookstoreController extends Controller
 
     	return $this->render('index', [
     			'input' => $search,
-    			'result' => $result
+    			'result' => $result,
+          'user' => $user,
     	]);
-
-
         // $this->layout = "@backend/themes/adminlte/layouts/index";
-        return $this->render('index');
+        // return $this->render('index');
     }
     public function actionHistory()
     {
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    
+
     	$query = book::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    
+
     	echo $search;
-    
+
     	return $this->render('history', [
     			'input' => $search,
     			'result' => $result
     	]);
-    
-    
+
+
     	// $this->layout = "@backend/themes/adminlte/layouts/index";
     	return $this->render('history');
     }
