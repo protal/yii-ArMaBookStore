@@ -104,7 +104,9 @@ $( "#rent" ).click(function() {
     type: 'POST',
     data: {books:JSON.stringify(books),$csrf},
     success: function(data) {
+      $('#loading').hide();
       console.log(data);
+
     },
 });
 
@@ -127,7 +129,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
            <a href="<?=$baseUrl."/auth/logout"?>">ออกจากระบบ</a>
 
              <p>จำนวนหนังสือทั้งหมด <b id="book_count">0</b> เล่ม <br> รวม <b id="price">0</b> บาท </p>
-             <button type="button" class="btn btn-success btn-sm pull-right" id="rent">
+             <button type="button" class="btn btn-success btn-sm pull-right" id="rent" data-toggle="modal" data-target="#loadingx">
                ยืมเลย
              </button>
              <br>
@@ -186,13 +188,8 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
   </table>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
 <!-- load -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="loading" tabindex="-1" role="dialog" aria-labelledby="loading" aria-hidden="true">
   <!-- <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
