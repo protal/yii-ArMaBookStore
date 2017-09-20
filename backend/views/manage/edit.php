@@ -10,7 +10,7 @@ $baseUrl=\Yii::getAlias('@web');
 
   	<div class="dropdown">
   		<label>ประเภทหนังสือ  :</label>
-    	<select name="type">
+    	<select name="type" value="<?=$model['type']?>">
   			<option value="การ์ตูน">การ์ตูน</option>
  		 	<option value="นิตยสาร">นิตยสาร </option>
  		 	<option value="วารสาร">วารสาร</option>

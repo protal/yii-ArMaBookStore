@@ -22,7 +22,7 @@ $baseUrl=\Yii::getAlias('@web');
   		<td>
         <?=$var['name']?>
         <?php
-          if(isset($var['version']))
+          if(isset($var['version'])&&$var['version']!='')
           {
             echo "<span class=\"badge badge-primary\">เล่มที่ ".$var['version']."</span>";
           }

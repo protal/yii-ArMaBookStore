@@ -108,6 +108,7 @@ class ManageController extends Controller
     {
         //config
         $request = Yii::$app->request;
+        $session = Yii::$app->session;
 
 
         //get id edit , not id -> new
@@ -139,40 +140,51 @@ class ManageController extends Controller
         $book->total = $total;
 
         if($book->save()){
-          echo "success";
-        }else {
-          echo "error";
+          //echo "success";
+          $session->setFlash('success', "บันทึกสำเร็จ");
+          return $this->redirect($baseUrl."/manage/booklist");
         }
-
-        //waiting redirect
-       	//กลับไปหน้ารายการหนังสือ
-         return $this->redirect($baseUrl."/manage/booklist");
+        else {
+          $session->setFlash('danger', " แก้ไขผิดพลาด");
+          return $this->redirect($baseUrl."/manage/edit");
+        }
     }
 
 
     public function actionDelete(){
     	$request =Yii::$app->request;
+    	$session = Yii::$app->session;
+    	
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
     	$model = book::findOne($id);
     	$model->delete();
 
-    	return $this->redirect($baseUrl."/manage/booklist");
+    	if($model->delete()){
+    		$session->setFlash('danger', " ลบผิดพลาด");
+    		return $this->redirect($baseUrl."/manage/booklist");
+    	
+    	}
+    	else {
+    		//echo "success";
+    		$session->setFlash('success', "ลบสำเร็จ");
+    		return $this->redirect($baseUrl."/manage/booklist");
+    	}
 
     }
     public function actionBookhistory(){
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    	
+
     	$query = book::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    	
+
     	echo $search;
-    	
+
     	return $this->render('bookhistory', [
     			'input' => $search,
     			'result' => $result
@@ -183,7 +195,7 @@ class ManageController extends Controller
 
 
 
-
+//manage ของ customer ด้านล่างทั้งหมด
 
 
 
@@ -221,6 +233,7 @@ class ManageController extends Controller
     {
     	//config
     	$request = Yii::$app->request;
+    	$session = Yii::$app->session;
 
 
     	//get id edit , not id -> new
@@ -250,27 +263,41 @@ class ManageController extends Controller
     	$customer->password = $password;
     	$customer->address = $address;
 
-    	if($customer->save()){
-    		echo "success";
-    	}else {
-    		echo "error";
-    	}
+     	if($customer->save()){
+          //echo "success";
+          $session->setFlash('success', "บันทึกสำเร็จ");
+          return $this->redirect($baseUrl."/manage/customerlist");
+        }
+        else {
+          $session->setFlash('danger', " แก้ไขผิดพลาด");
+          return $this->redirect($baseUrl."/manage/customeredit");
+        }
 
-    	//waiting redirect
-    	//กลับไปหน้ารายการหนังสือ
-    	return $this->redirect($baseUrl."/manage/customerlist");
+    	
     }
 
 
     public function actionCustomerdelete(){
     	$request =Yii::$app->request;
+    	$session = Yii::$app->session;
+    	
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
     	$model = customer::findOne($id);
     	$model->delete();
 
-    	return $this->redirect($baseUrl."/manage/customerlist");
+    	if($model->delete()){
+    		$session->setFlash('danger', " ลบผิดพลาด");
+    		return $this->redirect($baseUrl."/manage/customerlist");
+    		
+    	}
+    	else {
+    		//echo "success";
+    		$session->setFlash('success', "ลบสำเร็จ");
+    		return $this->redirect($baseUrl."/manage/customerlist");
+    	}
+    	// return $this->redirect($baseUrl."/manage/customerlist");
 
     }
     public function actionEditcustomer(){
@@ -281,5 +308,25 @@ class ManageController extends Controller
     	return $this->render('editcustomer',[
     			'model'=>$model
     	]);
+    }
+    
+    public function actionCustomerhistory(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    
+    	$query = customer::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    
+    	echo $search;
+    
+    	return $this->render('customerhistory', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    
+    	return $this->render('customerhistory');
     }
 }

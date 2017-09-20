@@ -1,20 +1,22 @@
 <?php
-$this->title = 'BookStore Log File';
+$this->title = 'Customer Log File';
 $baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
 ?>
 <table border="1" class="table table-striped">
 
 	<tr>
-		<th  data-field="name" data-sortable="true">ชื่อผู้ยืม</th>
-		<th  data-field="" data-sortable="true">รายการหนังสือ</th>
+		<th  data-field="firstname" data-sortable="true">ชื่อผู้ยืม</th>
+		<th  data-field="lastname" data-sortable="true">นามสกุลผู้ยืม</th>
 		<th  data-field="" data-sortable="true">สถานะ</th>
+		
     </tr>
 
 	
-      </td>
-      <td>1</td>
-  		<td>1</td>
+	<?php foreach ($result as $var){?>
+	<tr>
+  		<td><?=$var['firstname']?></td>
+  		<td><?=$var['lastname']?></td>
   		<td>
   			<select>
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
@@ -26,9 +28,7 @@ use yii\web\View;
 		</td>
   		
   	</tr>
-   
+   <?php }?>
+  
 
 </table>
-
-
-
