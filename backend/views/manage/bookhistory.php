@@ -23,12 +23,11 @@ use yii\web\View;
   				<option value="คืนช้าเสียค่าปรับ">คืนช้าเสียค่าปรับ</option>
 				<option value="ยกเลิกการจัดส่ง">ยกเลิกการจัดส่ง</option>
 			</select> 
-		</td>
-  		
+		</td>	
   	</tr>
-   
-
 </table>
+
+<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
 
 
 

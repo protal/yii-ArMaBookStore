@@ -17,6 +17,7 @@ use yii\web\View;
 	<tr>
   		<td><?=$var['firstname']?></td>
   		<td><?=$var['lastname']?></td>
+  		
   		<td>
   			<select>
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
