@@ -108,6 +108,7 @@ class ManageController extends Controller
     {
         //config
         $request = Yii::$app->request;
+        $session = Yii::$app->session;
 
 
         //get id edit , not id -> new
@@ -139,14 +140,14 @@ class ManageController extends Controller
         $book->total = $total;
 
         if($book->save()){
-          echo "success";
-        }else {
-          echo "error";
+          //echo "success";
+          $session->setFlash('success', "บันทึกสำเร็จ");
+          return $this->redirect($baseUrl."/manage/booklist");
         }
-
-        //waiting redirect
-       	//กลับไปหน้ารายการหนังสือ
-         return $this->redirect($baseUrl."/manage/booklist");
+        else {
+          $session->setFlash('danger', " แก้ไขผิดพลาด");
+          return $this->redirect($baseUrl."/manage/edit");
+        }
     }
 
 
@@ -164,15 +165,15 @@ class ManageController extends Controller
     public function actionBookhistory(){
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    	
+
     	$query = book::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    	
+
     	echo $search;
-    	
+
     	return $this->render('bookhistory', [
     			'input' => $search,
     			'result' => $result
