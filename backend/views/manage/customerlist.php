@@ -35,4 +35,4 @@ $baseUrl=\Yii::getAlias('@web');
 
 
 <td><a href="<?= $baseUrl."/manage/newcustomer"?>"><button type="button" class="btn btn-info">เพิ่ม customer</button></a></td>
-
+<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>

@@ -4,6 +4,16 @@ $baseUrl=\Yii::getAlias('@web');
 ?>
 
 
+<div class="search">
+  <form class="" action="" method="get">
+    <input type="text" name="search" placeholder="Search" value="<?php echo $search?>" />
+     <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-search" aria-hidden="true"></i></button>
+    </div>
+  </form>
+
+
+<br>
+
 <table border="1" class="table table-striped">
 
 	<tr>
@@ -43,3 +53,4 @@ $baseUrl=\Yii::getAlias('@web');
 
 
 <td><a href="<?= $baseUrl."/manage/newbook"?>"><button type="button" class="btn btn-info">เพิ่มหนังสือ</button></a></td>
+<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>

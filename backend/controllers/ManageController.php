@@ -44,23 +44,24 @@ class ManageController extends Controller
      */
     public function actionIndex()
     {
-    	$request = Yii::$app->request;
-    	$search = $request->get('search',null);
+    	// $request = Yii::$app->request;
+    	// $search = $request->get('search',null);
+      //
+    	// $query = book::find();
+    	// if($search != null ){
+    	// 	$query->where(["name" =>$search]);
+    	// }
+    	// $result = $query->all();
+      //
+      //
+      //
+    	// return $this->render('index', [
+    	// 		'input' => $search,
+    	// 		'result' => $result,
+      //     'search'=>$search,
+    	// ]);
 
-    	$query = book::find();
-    	if($search != null ){
-    		$query->where(["name" =>$search]);
-    	}
-    	$result = $query->all();
-
-    	echo $search;
-
-    	return $this->render('index', [
-    			'input' => $search,
-    			'result' => $result
-    	]);
-
-        $this->layout = "@backend/themes/adminlte/layouts/index";
+        // $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
     public function actionEdit(){
@@ -90,11 +91,10 @@ class ManageController extends Controller
     	}
     	$result = $query->all();
 
-    	echo $search;
-
     	return $this->render('booklist', [
     			'input' => $search,
-    			'result' => $result
+    			'result' => $result,
+          'search'=>$search,
     	]);
     	return $this->render('booklist');
     }
@@ -154,7 +154,7 @@ class ManageController extends Controller
     public function actionDelete(){
     	$request =Yii::$app->request;
     	$session = Yii::$app->session;
-    	
+
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
@@ -164,7 +164,7 @@ class ManageController extends Controller
     	if($model->delete()){
     		$session->setFlash('danger', " ลบผิดพลาด");
     		return $this->redirect($baseUrl."/manage/booklist");
-    	
+
     	}
     	else {
     		//echo "success";
@@ -273,14 +273,14 @@ class ManageController extends Controller
           return $this->redirect($baseUrl."/manage/customeredit");
         }
 
-    	
+
     }
 
 
     public function actionCustomerdelete(){
     	$request =Yii::$app->request;
     	$session = Yii::$app->session;
-    	
+
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
 
@@ -290,7 +290,7 @@ class ManageController extends Controller
     	if($model->delete()){
     		$session->setFlash('danger', " ลบผิดพลาด");
     		return $this->redirect($baseUrl."/manage/customerlist");
-    		
+
     	}
     	else {
     		//echo "success";
@@ -309,24 +309,24 @@ class ManageController extends Controller
     			'model'=>$model
     	]);
     }
-    
+
     public function actionCustomerhistory(){
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    
+
     	$query = customer::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    
+
     	echo $search;
-    
+
     	return $this->render('customerhistory', [
     			'input' => $search,
     			'result' => $result
     	]);
-    
+
     	return $this->render('customerhistory');
     }
 }
