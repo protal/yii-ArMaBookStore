@@ -97,6 +97,15 @@ $('#fresh-table').on('uncheck-all.bs.table.bs.table', function (e,rows) {
   console.log(books);
 });
 
+$( "#rent" ).click(function() {
+  $.ajax({
+    url: _saveAllDevicesUrl,
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify(postData),
+    // success: _madeSave.bind(this)
+});
+});
 
 EOT;
 $this->registerJS($str,View::POS_LOAD,'form-js');
