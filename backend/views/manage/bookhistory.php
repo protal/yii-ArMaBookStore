@@ -1,51 +1,74 @@
 <?php
-$this->title = 'Book History';
+$this->title = 'BookStore Log File';
 $baseUrl=\Yii::getAlias('@web');
-?>
-<form action="" method="get">
-	<div class="row">
-		<div class="col-sm-10">
-			<input name="search" class="form-control" type="text" >
-		</div>
-		<div class="col-sm-2">
-			<button type="submit" class="form-control btn btn-primary btn-sm">search</button>
-		</div>
-	</div>
-</form>
+use yii\web\View;
+$str = <<<EOT
+$('#fresh-table').bootstrapTable({
+    toolbar: ".toolbar",
 
-<style>
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
+    showRefresh: true,
+    search: true,
+    showToggle: true,
+    showColumns: true,
+    pagination: true,
+    striped: true,
+    pageSize: 8,
+    pageList: [8,10,25,50,100],
 
-th, td {
-    text-align: left;
-    padding: 8px;
-}
+    formatShowingRows: function(pageFrom, pageTo, totalRows){
+        //do nothing here, we don't want to show the text "showing x of y from..."
+    },
+    formatRecordsPerPage: function(pageNumber){
+        return pageNumber + " rows visible";
+    },
+    icons: {
+        refresh: 'fa fa-refresh',
+        toggle: 'fa fa-th-list',
+        columns: 'fa fa-columns',
+        detailOpen: 'fa fa-plus-circle',
+        detailClose: 'fa fa-minus-circle'
+    }
+});
+$(window).resize(function () {
+    $('#fresh-table').bootstrapTable('resetView');
+});
+EOT;
+$this->registerJS($str,View::POS_LOAD,'form-js');
 
-tr:nth-child(even){background-color: #f2f2f2}
+ ?>
 
-th {
-    background-color: #4CAF50;
-    color: white;
-}
-</style>
-<div> <br> </div>
+<div class="fresh-table full-color-orange">
+  <!--    Available colors for the full background: full-color-blue, full-color-azure, full-color-green, full-color-red, full-color-orange
+  Available colors only for the toolbar: toolbar-color-blue, toolbar-color-azure, toolbar-color-green, toolbar-color-red, toolbar-color-orange
+  -->
 
-<table border="1">
-  <tr>
-    <th>#id</th>
-    <th>courseID</th>
-    <th>CourseName</th>
-    
-  </tr>
-  
+  <div class="toolbar">
+    <button class="btn btn-default">กลับ</button>
+    <button class="btn btn-default">รายการหนังสือ</button>
+  </div>
 
-</table>
+  <table id="fresh-table" class="table">
+    <thead>
+       
+       
+      <th data-field="name" data-sortable="true">ชื่อผู้ยืม</th>
+      <th data-field="" data-sortable="true">รายการหนังสือ</th>
+      <th data-field="" data-sortable="true">สถานะ</th>
+      
+       <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
+    </thead>
+    <tbody>
+       
+      <?php foreach ($result as $var){?>
+	       <tr>
+              
+        		<td>1</td>
+        		<td>2</td>
+        		<td>3</td>
+        		
+  	   </tr>
+   <?php }?>
 
-<div> <br> </div>
-<div align="right">
-<a href="">
-<button type="submit" class="form-control btn btn-primary btn-sm"> + สร้าง</button></a>
+    </tbody>
+  </table>
 </div>

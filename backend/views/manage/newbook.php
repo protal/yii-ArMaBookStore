@@ -10,18 +10,26 @@ $baseUrl=\Yii::getAlias('@web');
   			<option value="การ์ตูน">การ์ตูน</option>
  		 	<option value="นิตยสาร">นิตยสาร </option>
  		 	<option value="วารสาร">วารสาร</option>
- 		 	
+ 		 	<option value="นวนิยาย">นวนิยาย</option>
+ 		 	<option value="บันเทิงคดี">บันเทิงคดี</option>
+ 		 	<option value="สารคดี">สารคดี</option>
+
  		</select>
-  
+
   	</div>
 
   	<br>
-  
+
   	<div class="form-group" >
     	<label>ชื่อหนังสือ : </label>
     	<input type="text" class="form-control" name="name" >
   	</div>
-   
+    <div class="form-group" >
+      <div class="col-md-3">
+    	<label>เล่มที่  </label>
+    	<input type="text" class="form-control" name="version" >
+  	</div>
+
    	<div class="form-group row">
   		<div class="col-xs-3">
     		<label for="ex1">ราคา</label>
@@ -39,14 +47,14 @@ $baseUrl=\Yii::getAlias('@web');
     		<input type="text" class="form-control" name="days">
   		</div>
   </div>
-   
+
     <div class="form-group row" >
 		<div class="col-xs-3">
     		<label>จำนวนหนังสือที่เพิ่ม</label>
     		<input type="text" class="form-control" name="total" >
   		</div>
   </div>
-   
-   
+
+
 <button type="submit" class="btn btn-primary">ยืนยัน</button>
 </form>

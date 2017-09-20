@@ -7,6 +7,8 @@ use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
 use backend\models\Book;
+use backend\models\Customer;
+
 
 /**
  * Site controller
@@ -44,78 +46,59 @@ class ManageController extends Controller
     {
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    	
+
     	$query = book::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    	 
+
     	echo $search;
-    	
+
     	return $this->render('index', [
     			'input' => $search,
     			'result' => $result
     	]);
-    	
+
         $this->layout = "@backend/themes/adminlte/layouts/index";
         return $this->render('index');
     }
     public function actionEdit(){
     	$request =Yii::$app->request;
     	$id=$request->get('id',null);
-    
+
     	$model = book::findOne($id);
     	return $this->render('edit',[
     			'model'=>$model
     	]);
     }
-       
-    public function actionBookedit(){
-    	$request = Yii::$app->request;
-    	$search = $request->get('search',null);
-    	
-    	
-    	$query = book::find();
-    	if($search != null ){
-    		$query->where(["name" =>$search]);
-    	}
-    	$result = $query->all();
-    	
-    	echo $search;
-    	 
-    	return $this->render('bookedit', [
-    			'input' => $search,
-    			'result' => $result
-    	]);
-    	return $this->render('bookedit');
-    }
+
 
     public function actionNewbook(){
-    	
+
     	return $this->render('newbook');
     }
-    
+
     public function actionBooklist(){
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
-    	
-    	
+
+
     	$query = book::find();
     	if($search != null ){
     		$query->where(["name" =>$search]);
     	}
     	$result = $query->all();
-    	
+
     	echo $search;
-    	 
+
     	return $this->render('booklist', [
     			'input' => $search,
     			'result' => $result
     	]);
     	return $this->render('booklist');
     }
-   
+
     /**
      * Add book
      *
@@ -125,21 +108,22 @@ class ManageController extends Controller
     {
         //config
         $request = Yii::$app->request;
-        
-		
-        //get id edit , not id -> new 
+
+
+        //get id edit , not id -> new
         $id = $request->get('id',null);
         $name = $request->get('name',null);
+        $version = $request->get('version',null);
         $type = $request->get('type',null);
         $price = $request->get('price',null);
         $days = $request->get('days',null);
         $charge = $request->get('charge',null);
         $total = $request->get('total',null);
-        
+
         $baseUrl = \Yii::getAlias('@web');
-        
+
         $model;
-        
+
         if($id == null){
           $book = new Book;
         }else {
@@ -147,6 +131,7 @@ class ManageController extends Controller
         }
 
         $book->name = $name;
+        $book->version = $version;
         $book->type = $type;
         $book->price = $price;
         $book->days = $days;
@@ -160,23 +145,141 @@ class ManageController extends Controller
         }
 
         //waiting redirect
-       	//กลับไปหน้ารายการหนังสือ 
+       	//กลับไปหน้ารายการหนังสือ
          return $this->redirect($baseUrl."/manage/booklist");
     }
-    
+
+
     public function actionDelete(){
     	$request =Yii::$app->request;
     	$id=$request->get('id',null);
     	$baseUrl=\Yii::getAlias('@web');
-    
+
     	$model = book::findOne($id);
     	$model->delete();
-    
+
     	return $this->redirect($baseUrl."/manage/booklist");
-    
+
     }
     public function actionBookhistory(){
-    	 
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+    	
+    	$query = book::find();
+    	if($search != null ){
+    		$query->where(["name" =>$search]);
+    	}
+    	$result = $query->all();
+    	
+    	echo $search;
+    	
+    	return $this->render('bookhistory', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+
     	return $this->render('bookhistory');
+    }
+
+
+
+
+
+
+
+    public function actionNewcustomer(){
+
+    	return $this->render('newcustomer');
+    }
+
+    public function actionCustomerlist(){
+    	$request = Yii::$app->request;
+    	$search = $request->get('search',null);
+
+
+    	$query = customer::find();
+    	if($search != null ){
+    		$query->where(["firstname" =>$search]);
+    	}
+    	$result = $query->all();
+
+    	echo $search;
+
+    	return $this->render('customerlist', [
+    			'input' => $search,
+    			'result' => $result
+    	]);
+    	return $this->render('customerlist');
+    }
+
+    /**
+     * Add book
+     *
+     * @return string
+     */
+    public function actionCustomersave()
+    {
+    	//config
+    	$request = Yii::$app->request;
+
+
+    	//get id edit , not id -> new
+    	$id = $request->get('id',null);
+    	$firstname = $request->get('firstname',null);
+    	$lastname = $request->get('lastname',null);
+    	$phone = $request->get('phone',null);
+    	$email = $request->get('email',null);
+    	$password = $request->get('password',null);
+    	$address = $request->get('address',null);
+
+    	$baseUrl = \Yii::getAlias('@web');
+
+    	$model;
+
+    	if($id == null){
+    		$customer = new Customer;
+    	}else {
+    		$customer = Customer::findOne($id);
+    	}
+
+
+    	$customer->firstname = $firstname;
+    	$customer->lastname = $lastname;
+    	$customer->phone = $phone;
+    	$customer->email = $email;
+    	$customer->password = $password;
+    	$customer->address = $address;
+
+    	if($customer->save()){
+    		echo "success";
+    	}else {
+    		echo "error";
+    	}
+
+    	//waiting redirect
+    	//กลับไปหน้ารายการหนังสือ
+    	return $this->redirect($baseUrl."/manage/customerlist");
+    }
+
+
+    public function actionCustomerdelete(){
+    	$request =Yii::$app->request;
+    	$id=$request->get('id',null);
+    	$baseUrl=\Yii::getAlias('@web');
+
+    	$model = customer::findOne($id);
+    	$model->delete();
+
+    	return $this->redirect($baseUrl."/manage/customerlist");
+
+    }
+    public function actionEditcustomer(){
+    	$request =Yii::$app->request;
+    	$id=$request->get('id',null);
+
+    	$model = customer::findOne($id);
+    	return $this->render('editcustomer',[
+    			'model'=>$model
+    	]);
     }
 }
