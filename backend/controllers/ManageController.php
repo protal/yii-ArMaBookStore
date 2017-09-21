@@ -215,14 +215,16 @@ class ManageController extends Controller
     	}
     	$result = $query->all();
 
-    	echo $search;
-
     	return $this->render('customerlist', [
     			'input' => $search,
-    			'result' => $result
+    			'result' => $result,
+    			'search'=>$search,
     	]);
     	return $this->render('customerlist');
     }
+    
+   
+    
 
     /**
      * Add book
