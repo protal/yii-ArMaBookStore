@@ -22,8 +22,6 @@ use yii\web\View;
 				$i = 0;
 				$c = Customer::findOne($var['customer']);
 			?>
-
-
 				<?php
 	  		foreach ($var['books'] as $b)
 	  		{
