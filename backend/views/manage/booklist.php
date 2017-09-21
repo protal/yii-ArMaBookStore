@@ -3,6 +3,10 @@ $this->title = 'ArmaBook List';
 $baseUrl=\Yii::getAlias('@web');
 ?>
 
+<td><a href="<?= $baseUrl."/manage/newbook"?>"><button type="button" class="btn btn-info">เพิ่มหนังสือ</button></a></td>
+<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
+<br>
+<br>
 
 <div class="search">
   <form class="" action="" method="get">
@@ -52,5 +56,3 @@ $baseUrl=\Yii::getAlias('@web');
 </table>
 
 
-<td><a href="<?= $baseUrl."/manage/newbook"?>"><button type="button" class="btn btn-info">เพิ่มหนังสือ</button></a></td>
-<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>

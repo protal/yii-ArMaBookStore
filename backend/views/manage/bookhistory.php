@@ -6,6 +6,11 @@ $this->title = 'BookStore Log File';
 $baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
 ?>
+
+
+<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
+<br>
+<br>
 <table border="1" class="table table-striped">
 
 	<tr>
@@ -42,5 +47,3 @@ use yii\web\View;
   	</tr>
    <?php }?>
 </table>
-
-<td><a href="<?= $baseUrl."/manage"?>"><button type="button" class="btn btn-info">กลับ</button></a></td>
