@@ -35,26 +35,26 @@ $baseUrl=\Yii::getAlias('@web');
     	<input type="text" class="form-control" name="name"  value="<?=$model['name']?>" >
   	</div>
 
-      <div class="col-md-6">
+      <div class="col-md-8">
     	<label>เล่มที่  </label>
     	<input type="text" class="form-control" name="version" value="<?=$model['version']?>" >
   	</div>
 
 
-  	<div class="col-md-6">
+  	<div class="col-md-8">
     		<label for="ex1">ราคา</label>
     		<input type="text" class="form-control" name="price" value="<?=$model['price']?>" >
   	</div>
-  	<div class="col-md-6">
+  	<div class="col-md-8">
     		<label for="ex2">ค่าปรับ</label>
     		<input type="text" class="form-control" name="charge" value="<?=$model['charge']?>" >
   	</div>
-		<div class="col-md-6">
+		<div class="col-md-8">
     		<label>จำนวนวันที่ยืม</label>
     		<input type="text" class="form-control" name="days" value="<?=$model['days']?>" >
   </div>
   </div>
-		<div class="col-md-6">
+		<div class="col-md-8">
     		<label>จำนวนหนังสือที่เพิ่ม</label>
     		<input type="text" class="form-control" name="total" value="<?=$model['total']?>"  >
   		</div>
