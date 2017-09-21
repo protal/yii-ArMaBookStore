@@ -38,6 +38,7 @@ class Rent extends \yii\mongodb\ActiveRecord
             'start_at',
             'price',
             'charge',
+        	'status',
         ];
     }
 
@@ -47,7 +48,7 @@ class Rent extends \yii\mongodb\ActiveRecord
     public function rules()
     {
         return [
-            [['_id', 'Customer', 'Book_id', 'start_at', 'price', 'charge'], 'safe']
+            [['_id', 'Customer', 'Book_id', 'start_at', 'price', 'charge','status'], 'safe']
         ];
     }
 }

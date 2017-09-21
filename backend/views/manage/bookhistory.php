@@ -1,6 +1,7 @@
 <?php
 use backend\models\Book;
 use backend\models\Customer;
+use backend\models\Rent;
 $this->title = 'BookStore Log File';
 $baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
@@ -28,7 +29,7 @@ use yii\web\View;
   		
   		</td>
   		<td>
-  			<select>
+  			<select <?=$var['status']?>>
   				<option value="กำลังจัดส่ง">กำลังจัดส่ง</option>
   				<option value="จัดส่งแล้ว">จัดส่งแล้ว</option>
   				<option value="ถึงกำหนดคืน">ถึงกำหนดคืน</option>
