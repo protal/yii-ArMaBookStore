@@ -44,25 +44,14 @@ class ManageController extends Controller
      */
     public function actionIndex()
     {
-    	// $request = Yii::$app->request;
-    	// $search = $request->get('search',null);
-      //
-    	// $query = book::find();
-    	// if($search != null ){
-    	// 	$query->where(["name" =>$search]);
-    	// }
-    	// $result = $query->all();
-      //
-      //
-      //
-    	// return $this->render('index', [
-    	// 		'input' => $search,
-    	// 		'result' => $result,
-      //     'search'=>$search,
-    	// ]);
-
-        // $this->layout = "@backend/themes/adminlte/layouts/index";
-        return $this->render('index');
+      $book = Book::find()->count();
+      $rent = Rent::find()->count();
+      $customer = Customer::find()->count();
+      return $this->render('index',[
+    			'book'=>$book,
+          'rent'=>$rent,
+          'customer'=>$customer,
+    	]);
     }
     public function actionEdit(){
     	$request =Yii::$app->request;
