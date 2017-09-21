@@ -48,7 +48,7 @@ use yii\web\View;
 							</select>
 						</td>
 					</tr>
-					<?
+					<?php
 					$i++;
 	  		}
 	  		?>
