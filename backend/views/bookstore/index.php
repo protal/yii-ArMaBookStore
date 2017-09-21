@@ -154,7 +154,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
   -->
 
   <div class="toolbar">
-    <a href="<?=$baseUrl."/bookstore"?>" class="btn btn-default">รายการหนังสือ</a>
+    <a href="<?=$baseUrl."/bookstore"?>" class="btn btn-default active">รายการหนังสือ</a>
     <?php if (isset($user)): ?>
       <a href="<?=$baseUrl."/bookstore/history"?>" class="btn btn-default">ประวัติการยืม</a>
     <?php endif; ?>
@@ -175,7 +175,16 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 	       <tr data-events="selectTable" data-id="<?=$var['_id']?>" data-price="<?=$var['price']?>">
 	          <td>
             </td>
-        		<td><?=$var['name']?></td>
+        		<td>
+              <?=$var['name']?>
+              <?php
+                if(isset($var['version'])&&$var['version']!='')
+                {
+                  echo "<span class=\"badge badge-primary\">เล่มที่ ".$var['version']."</span>";
+                }
+               ?>
+
+            </td>
         		<td><?=$var['type']?></td>
         		<td><?=$var['price']?> บาท</td>
         		<td><?=$var['days']?> วัน</td>

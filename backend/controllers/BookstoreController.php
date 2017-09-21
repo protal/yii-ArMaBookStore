@@ -78,23 +78,34 @@ class BookstoreController extends Controller
     {
     	$request = Yii::$app->request;
     	$search = $request->get('search',null);
+      $session = Yii::$app->session;
 
-    	$query = book::find();
-    	if($search != null ){
-    		$query->where(["name" =>$search]);
-    	}
-    	$result = $query->all();
-
-    	echo $search;
-
-    	return $this->render('history', [
-    			'input' => $search,
-    			'result' => $result
-    	]);
+      if($session->has('user')){
+        $user  = $session->get('user');
+        $rent = Rent::find(['customer' =>$user['_id']])->all();
+        return $this->render('history', [
+        		'result' => $rent,
+            'user' => $user,
+        ]);
+      }else {
+        $user = null;
+      }
 
 
-    	// $this->layout = "@backend/themes/adminlte/layouts/index";
-    	return $this->render('history');
+    	// $query = book::find();
+    	// if($search != null ){
+    	// 	$query->where(["name" =>$search]);
+    	// }
+    	// $result = $query->all();
+      //
+    	// echo $search;
+      //
+    	// return $this->render('history', [
+    	// 		'input' => $search,
+    	// 		'result' => $result,
+      //     'user' => $user,
+    	// ]);
+
     }
 
 
@@ -129,5 +140,19 @@ class BookstoreController extends Controller
 
 
 
+    }
+    public function actionCancel()
+    {
+      $baseUrl=\Yii::getAlias('@web');
+      $request = Yii::$app->request;
+      $id = $request->get('id',null);
+      $book_ar = $request->get('book_ar',null);
+      $message = 'ยกเลิกการจัดส่ง';
+      $rent = Rent::findOne($id);
+      $t = $rent['books'];
+      $t[$book_ar]['status'] = $message;
+      $rent->books = $t;
+      $rent->save();
+      return $this->redirect($baseUrl."/bookstore/history");
     }
 }
