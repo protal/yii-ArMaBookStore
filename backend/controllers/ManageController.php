@@ -186,11 +186,11 @@ class ManageController extends Controller
     			'input' => $search,
     			'result' => $result
     	]);
-    	
-    	
+
+
 
     	return $this->render('bookhistory');
-    	
+
     }
 
 
@@ -222,9 +222,9 @@ class ManageController extends Controller
     	]);
     	return $this->render('customerlist');
     }
-    
-   
-    
+
+
+
 
     /**
      * Add book
@@ -330,5 +330,19 @@ class ManageController extends Controller
     	]);
 
     	return $this->render('customerhistory');
+    }
+
+    public function actionChangestatus()
+    {
+      $request = Yii::$app->request;
+      $id = $request->post('id',null);
+      $book_ar = $request->post('book_ar',null);
+      $message = $request->post('message',null);
+      $rent = Rent::findOne($id);
+      $t = $rent['books'];
+      $t[$book_ar]['status'] = $message;
+      $rent->books = $t;
+      $rent->save();
+      return $id." ".$book_ar." ".$message;
     }
 }

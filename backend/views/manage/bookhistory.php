@@ -2,9 +2,25 @@
 use backend\models\Book;
 use backend\models\Customer;
 use backend\models\Rent;
+$csrf = "'".\yii::$app->request->csrfParam."':'".\yii::$app->request->csrfToken."'";
 $this->title = 'BookStore Log File';
 $baseUrl=\Yii::getAlias('@web');
 use yii\web\View;
+$str = <<<EOT
+
+$(".status").change(function() {
+  $.ajax({
+    url: '$baseUrl/manage/changestatus',
+    type: 'POST',
+    data: {message:$(this).val(),book_ar:$(this).data('book'),id:$(this).data('rent'),$csrf},
+    success: function(data) {
+    	console.log(data);
+    },
+	});
+});
+EOT;
+$this->registerJS($str,View::POS_LOAD,'form-js');
+
 ?>
 
 
@@ -38,7 +54,7 @@ use yii\web\View;
 						<td><?=$book['name']?></td>
 						<td>
 
-				  			<select>
+				  		<select class="status" data-rent="<?=$var['_id']?>" data-book="<?=$i?>">
 				  				<option value="กำลังจัดส่ง" <?=($b['status']=="กำลังจัดส่ง")?"selected='selected'":""?>>กำลังจัดส่ง</option>
 				  				<option value="จัดส่งแล้ว" <?=($b['status']=="จัดส่งแล้ว")?"selected='selected'":""?>>จัดส่งแล้ว</option>
 				  				<option value="ถึงกำหนดคืน" <?=($b['status']=="ถึงกำหนดคืน")?"selected='selected'":""?>>ถึงกำหนดคืน</option>
