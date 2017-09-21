@@ -38,8 +38,6 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 				$i = 0;
 				$c = Customer::findOne($var['customer']);
 			?>
-
-
 				<?php
 	  		foreach ($var['books'] as $b)
 	  		{
@@ -64,7 +62,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
 							</select>
 						</td>
 					</tr>
-					<?
+					<?php
 					$i++;
 	  		}
 	  		?>
