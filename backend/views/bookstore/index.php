@@ -3,6 +3,7 @@ $this->title = 'ArmaBook List';
 $baseUrl = \Yii::getAlias('@web');
 $csrf = "'".\yii::$app->request->csrfParam."':'".\yii::$app->request->csrfToken."'";
 use yii\web\View;
+use backend\models\Rent;
 $str = <<<EOT
 var price = 0;
 var book_count = 0;
@@ -112,6 +113,7 @@ $( "#rent" ).click(function() {
 
 });
 
+
 EOT;
 $this->registerJS($str,View::POS_LOAD,'form-js');
 
@@ -161,7 +163,7 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
   </div>
   <table id="fresh-table" data-click-to-select="true" class="table">
     <thead>
-      <th data-field="select" data-checkbox="true" >เลือก</th>
+      <th data-field="select" data-checkbox="true">เลือก</th>
       <th data-field="name" data-sortable="true">ชื่อหนังสือ</th>
       <th data-field="type" data-sortable="true">ประเภท</th>
       <th data-field="price" data-sortable="true">ราคา</th>
@@ -171,26 +173,31 @@ $this->registerJS($str,View::POS_LOAD,'form-js');
        <!-- <th data-field="actions" data-formatter="operateFormatter" data-events="operateEvents">Actions</th> -->
     </thead>
     <tbody>
-      <?php foreach ($result as $var){?>
-	       <tr data-events="selectTable" data-id="<?=$var['_id']?>" data-price="<?=$var['price']?>">
-	          <td>
-            </td>
-        		<td>
-              <?=$var['name']?>
-              <?php
-                if(isset($var['version'])&&$var['version']!='')
-                {
-                  echo "<span class=\"badge badge-primary\">เล่มที่ ".$var['version']."</span>";
-                }
-               ?>
+      <?php foreach ($result as $var){
+        $rent_b = Rent::find(["books.book_id"=>$var['_id']])->count();
+      ?>
+      <?php if ($var['total']-$rent_b != 0): ?>
+        <tr data-events="selectTable" data-id="<?=$var['_id']?>" data-price="<?=$var['price']?>">
+           <td>
+             <input data-index="0" name="btSelectItem" type="checkbox" >
+           </td>
+           <td>
+             <?=$var['name']?>
+             <?php
+               if(isset($var['version'])&&$var['version']!='')
+               {
+                 echo "<span class=\"badge badge-primary\">เล่มที่ ".$var['version']."</span>";
+               }
+              ?>
 
-            </td>
-        		<td><?=$var['type']?></td>
-        		<td><?=$var['price']?> บาท</td>
-        		<td><?=$var['days']?> วัน</td>
-        		<td><?=$var['charge']?> บาท</td>
-            <td><?=$var['total']?></td>
-  	   </tr>
+           </td>
+           <td><?=$var['type']?></td>
+           <td><?=$var['price']?> บาท</td>
+           <td><?=$var['days']?> วัน</td>
+           <td><?=$var['charge']?> บาท</td>
+           <td><?=$var['total']-$rent_b?></td>
+        </tr>
+      <?php endif; ?>
    <?php }?>
 
     </tbody>
